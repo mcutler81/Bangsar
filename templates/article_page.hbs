@@ -84,14 +84,6 @@
           </div>
         </div>
 
-        <div id="gfAppliesToVisible" class="gfAppliesTo" style="display: none">
-            <!-- should be populated by JavaScript based on article contents -->
-            This article applies to:
-            <span class="gfAppliesToControl"><input type="checkbox" id="gfBox_appliesToControl" class="gfNotChecked" disabled="disabled" />Control (self-service)</span>
-            |
-            <span class="gfAppliesToManaged"><input type="checkbox" id="gfBox_appliesToManaged" class="gfNotChecked" disabled="disabled" />Managed (full-service)</span>
-        </div>
-
         {{#if settings.show_follow_article}}
           <div class="article-subscribe">{{subscribe}}</div>
         {{/if}}
@@ -99,6 +91,15 @@
 
       <section class="article-info">
         <div class="article-content">
+
+            <div id="gfAppliesToVisible" class="gfAppliesTo" style="display: none">
+                <!-- should be populated by JavaScript based on special content in the article itself -->
+                This article applies to:
+                <span class="gfAppliesToControl"><input type="checkbox" id="gfBox_appliesToControl" class="gfNotChecked" disabled="disabled" />Control (self-service)</span>
+                |
+                <span class="gfAppliesToManaged"><input type="checkbox" id="gfBox_appliesToManaged" class="gfNotChecked" disabled="disabled" />Managed (full-service)</span>
+            </div>
+          
           <div class="article-body">{{article.body}}</div>
 
           <div class="article-attachments">
@@ -340,7 +341,8 @@
                 // do the UI effect
                 var targetElem = document.querySelector(`#gfBox_appliesTo${brand.name}`);
                 targetElem.checked = brand.isOn;
-                targetElem.className += brand.isOn ? "gfChecked" : "gfNotChecked"
+                targetElem.className += brand.isOn ? "gfChecked" : "gfNotChecked";
+                targetElem.style.display = "block";
             });
         }
     }
