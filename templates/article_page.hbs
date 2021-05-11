@@ -342,9 +342,9 @@
                 var targetElem = document.querySelector(`#gfBox_appliesTo${brand.name}`);
                 targetElem.checked = brand.isOn;
                 targetElem.className += brand.isOn ? "gfChecked" : "gfNotChecked";
-                targetElem.style.display = "block";
             });
+            visibleElem.style.display = "block";
         }
     }
-    showAppliesTo();
+    // showAppliesTo();
 </script>
