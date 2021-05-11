@@ -1798,8 +1798,8 @@ li.article-list-item::before {
 
 .article-body code {
   background: darken($background_color, 3%);
-  border: 1px solid #ddd;
-  border-radius: 3px;
+  /* border: 1px solid #ddd;
+  border-radius: 3px; */
   padding: 0 5px;
   margin: 0 2px;
 }
