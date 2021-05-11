@@ -1,7 +1,7 @@
 {
   "name": "Bangsar",
   "author": "Alegion",
-  "version": "2.5.7",
+  "version": "2.5.8",
   "api_version": 2,
   "default_locale": "en-us",
   "settings": [
@@ -289,7 +289,7 @@
           "type": "checkbox",
           "description": "article_author_description",
           "label": "article_author_label",
-          "value": true
+          "value": false
         },
         {
           "identifier": "show_article_comments",
