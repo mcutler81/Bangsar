@@ -391,8 +391,8 @@
                 }
                 // do the UI effect
                 var newClass = brand.isOn ? "gfChecked" : "gfNotChecked";
+                var targetElem = document.querySelector(`#gfMark_appliesTo${brand.name}`);
                 if (targetElem) {
-                    var targetElem = document.querySelector(`#gfMark_appliesTo${brand.name}`);
                     targetElem.className += " " + newClass;
                     targetElem.src = brand.isOn ? targetElem.dataset.srcIfSet : targetElem.dataset.srcIfUnset;
                 }
