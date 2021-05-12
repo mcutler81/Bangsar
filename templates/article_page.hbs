@@ -105,6 +105,7 @@
     table.gfAppliesTo td.gfBrandCheckmark {
         text-align: right;
         padding-right: 0px;
+        padding-top: 10px;
     }
     table.gfAppliesTo td.gfBrandWrapper {
         padding-left: 0px;
@@ -116,17 +117,17 @@
     }
     div.gfUnderBrand {
         font-size: .8rem;
-        color: #666;
+        color: #999;
     }
     img.gfBrandCheckmark {
         width: 24px;
         height: 24px;
     }
-    td.gfNotChecked gfBrand {
-        color: #666;
+    td.gfNotChecked {
+        opacity: .5;
     }
 </style>
-            <table id="gfAppliesToVisible" class="gfAppliesTo" style="display: none">
+            <table id="gfAppliesToVisible" class="gfAppliesTo">
                 <tbody>
                     <tr>
                         <td>
@@ -135,14 +136,14 @@
                         <td class="gfBrandCheckmark">
                             <img id="gfMark_appliesToControl" class="gfBrandCheckmark" data-src-if-unset="{{asset 'branded-uncheckmark.svg'}}" data-src-if-set="{{asset 'branded-checkmark.svg'}}" src="{{asset 'branded-checkmark.svg'}}" />
                         </td>
-                        <td class="gfBrandWrapper">
+                        <td id="gfBrandWrapper_Control" class="gfBrandWrapper">
                             <div class="gfBrand">Control</div>
                             <div class="gfUnderBrand">(self-serve)</div>
                         </td>
                         <td class="gfBrandCheckmark">
                             <img id="gfMark_appliesToManaged" class="gfBrandCheckmark" data-src-if-unset="{{asset 'branded-uncheckmark.svg'}}" data-src-if-set="{{asset 'branded-checkmark.svg'}}" src="{{asset 'branded-uncheckmark.svg'}}" />
                         </td>
-                        <td>
+                        <td id="gfBrandWrapper_Managed" class="gfBrandWrapper">
                             <div class="gfBrand">Managed</div>
                             <div class="gfUnderBrand">(full-serve)</div>
                         </td>
@@ -392,8 +393,9 @@
                 var targetElem = document.querySelector(`#gfMark_appliesTo${brand.name}`);
                 var newClass = brand.isOn ? "gfChecked" : "gfNotChecked";
                 targetElem.className += newClass;
-                // FIXME: unreliable ... targetElem.offsetParent.className += newClass;
                 targetElem.src = brand.isOn ? targetElem.dataset.srcIfSet : targetElem.dataset.srcIfUnset;
+                var siblingElem = document.querySelector(`gfBrandWrapper_${brand.name}`);
+                siblingElem.className += newClass;
             });
             visibleElem.style.display = "block";
         }
