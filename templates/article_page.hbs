@@ -91,14 +91,62 @@
 
       <section class="article-info">
         <div class="article-content">
+<style>
+    table.gfAppliesTo {
+        width: 100%;
+        border: 1px solid #333;
+    }
+    table.gfAppliesTo td {
+        margin: 0px;
+        padding: 8px 16px;
+        text-align: left;
+    }
+    table.gfAppliesTo td.gfBrandCheckmark {
+        text-align: right;
+    }
+    div.gfBrand {
+        font-weight: bold;
+        font-size: 1.33ren;
+    }
+    div.gfUnderBrand {
+        font-size: .9rem;
+        color: #666;
+    }
+    img.gfBrandCheckmark {
+        width: 24px;
+        height: 24px;
+    }
+</style>
+            <table id="gfAppliesToVisible" class="gfAppliesTo" style="display: none">
+                <tbody>
+                    <tr>
+                        <td>
+                            This article applies to:
+                        </td>
+                        <td class="gfBrandCheckmark">
+                            <img id="gfMark_appliesToControl" class="gfBrandCheckmark" data-src-if-unset="{{asset 'branded-uncheckmark.svg'}}" data-src-if-set="{{asset 'branded-checkmark.svg'}}" src="{{asset 'branded-checkmark.svg'}}" />
+                        </td>
+                        <td>
+                            <div class="gfBrand">Control</div>
+                            <div class="gfUnderBrand">(self-serve)</div>
+                        </td>
+                        <td class="gfBrandCheckmark">
+                            <img id="gfMark_appliesToManaged" class="gfBrandCheckmark" data-src-if-unset="{{asset 'branded-uncheckmark.svg'}}" data-src-if-set="{{asset 'branded-checkmark.svg'}}" src="{{asset 'branded-uncheckmark.svg'}}" />
+                        </td>
+                        <td>
+                            <div class="gfBrand">Managed</div>
+                            <div class="gfUnderBrand">(full-serve)</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
 
-            <div id="gfAppliesToVisible" class="gfAppliesTo" style="display: none">
-                <!-- should be populated by JavaScript based on special content in the article itself -->
+            <!--<div id="gfAppliesToVisible" class="gfAppliesTo" style="display: none">
                 This article applies to:
                 <span class="gfAppliesToControl"><input type="checkbox" id="gfBox_appliesToControl" class="gfNotChecked" disabled="disabled" />Control (self-service)</span>
                 |
                 <span class="gfAppliesToManaged"><input type="checkbox" id="gfBox_appliesToManaged" class="gfNotChecked" disabled="disabled" />Managed (full-service)</span>
-            </div>
+            </div>-->
           
           <div class="article-body">{{article.body}}</div>
 
@@ -339,9 +387,10 @@
                     brand.isOn = srcElem.className.toLowerCase().includes(`appliesto${brand.name.toLowerCase()}`);
                 }
                 // do the UI effect
-                var targetElem = document.querySelector(`#gfBox_appliesTo${brand.name}`);
-                targetElem.checked = brand.isOn;
+                var targetElem = document.querySelector(`#gfMark_appliesTo${brand.name}`);
+                // targetElem.checked = brand.isOn;
                 targetElem.className += brand.isOn ? "gfChecked" : "gfNotChecked";
+                targetElem.src = brand.isOn ? targetElem.dataset["src-if-set"] : targetElem.dataset["src-if-unset"] ;
             });
             visibleElem.style.display = "block";
         }
