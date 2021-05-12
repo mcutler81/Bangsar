@@ -393,11 +393,11 @@
                 var newClass = brand.isOn ? "gfChecked" : "gfNotChecked";
                 if (targetElem) {
                     var targetElem = document.querySelector(`#gfMark_appliesTo${brand.name}`);
-                    targetElem.className += newClass;
+                    targetElem.className += " " + newClass;
                     targetElem.src = brand.isOn ? targetElem.dataset.srcIfSet : targetElem.dataset.srcIfUnset;
                 }
                 var siblingElem = document.querySelector(`#gfBrandWrapper_${brand.name}`);
-                if (siblingElem) siblingElem.className += newClass;
+                if (siblingElem) siblingElem.className += " " + newClass;
             });
             visibleElem.style.display = "block";
         }
