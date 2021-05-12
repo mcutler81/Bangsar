@@ -392,7 +392,7 @@
                 var targetElem = document.querySelector(`#gfMark_appliesTo${brand.name}`);
                 var newClass = brand.isOn ? "gfChecked" : "gfNotChecked";
                 targetElem.className += newClass;
-                targetElem.offsetParent.className += newClass;
+                // FIXME: unreliable ... targetElem.offsetParent.className += newClass;
                 targetElem.src = brand.isOn ? targetElem.dataset.srcIfSet : targetElem.dataset.srcIfUnset;
             });
             visibleElem.style.display = "block";
