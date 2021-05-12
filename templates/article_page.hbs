@@ -93,7 +93,7 @@
         <div class="article-content">
 <style>
     table.gfAppliesTo {
-        width: 100%;
+        /* width: 100%; */
         border: 1px solid #333;
     }
     table.gfAppliesTo td {
@@ -390,12 +390,14 @@
                     brand.isOn = srcElem.className.toLowerCase().includes(`appliesto${brand.name.toLowerCase()}`);
                 }
                 // do the UI effect
-                var targetElem = document.querySelector(`#gfMark_appliesTo${brand.name}`);
                 var newClass = brand.isOn ? "gfChecked" : "gfNotChecked";
-                targetElem.className += newClass;
-                targetElem.src = brand.isOn ? targetElem.dataset.srcIfSet : targetElem.dataset.srcIfUnset;
-                var siblingElem = document.querySelector(`gfBrandWrapper_${brand.name}`);
-                siblingElem.className += newClass;
+                if (targetElem) {
+                    var targetElem = document.querySelector(`#gfMark_appliesTo${brand.name}`);
+                    targetElem.className += newClass;
+                    targetElem.src = brand.isOn ? targetElem.dataset.srcIfSet : targetElem.dataset.srcIfUnset;
+                }
+                var siblingElem = document.querySelector(`#gfBrandWrapper_${brand.name}`);
+                if (siblingElem) siblingElem.className += newClass;
             });
             visibleElem.style.display = "block";
         }
