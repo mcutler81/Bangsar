@@ -98,23 +98,32 @@
     }
     table.gfAppliesTo td {
         margin: 0px;
-        padding: 8px 16px;
+        padding: 8px 4px;
         text-align: left;
+        vertical-align: top;
     }
     table.gfAppliesTo td.gfBrandCheckmark {
         text-align: right;
+        padding-right: 0px;
+    }
+    table.gfAppliesTo td.gfBrandWrapper {
+        padding-left: 0px;
+        padding-right: 16px;
     }
     div.gfBrand {
         font-weight: bold;
-        font-size: 1.33ren;
+        font-size: 1.5ren;
     }
     div.gfUnderBrand {
-        font-size: .9rem;
+        font-size: .8rem;
         color: #666;
     }
     img.gfBrandCheckmark {
         width: 24px;
         height: 24px;
+    }
+    td.gfNotChecked gfBrand {
+        color: #666;
     }
 </style>
             <table id="gfAppliesToVisible" class="gfAppliesTo" style="display: none">
@@ -126,7 +135,7 @@
                         <td class="gfBrandCheckmark">
                             <img id="gfMark_appliesToControl" class="gfBrandCheckmark" data-src-if-unset="{{asset 'branded-uncheckmark.svg'}}" data-src-if-set="{{asset 'branded-checkmark.svg'}}" src="{{asset 'branded-checkmark.svg'}}" />
                         </td>
-                        <td>
+                        <td class="gfBrandWrapper">
                             <div class="gfBrand">Control</div>
                             <div class="gfUnderBrand">(self-serve)</div>
                         </td>
@@ -140,13 +149,6 @@
                     </tr>
                 </tbody>
             </table>
-
-            <!--<div id="gfAppliesToVisible" class="gfAppliesTo" style="display: none">
-                This article applies to:
-                <span class="gfAppliesToControl"><input type="checkbox" id="gfBox_appliesToControl" class="gfNotChecked" disabled="disabled" />Control (self-service)</span>
-                |
-                <span class="gfAppliesToManaged"><input type="checkbox" id="gfBox_appliesToManaged" class="gfNotChecked" disabled="disabled" />Managed (full-service)</span>
-            </div>-->
           
           <div class="article-body">{{article.body}}</div>
 
@@ -388,12 +390,13 @@
                 }
                 // do the UI effect
                 var targetElem = document.querySelector(`#gfMark_appliesTo${brand.name}`);
-                // targetElem.checked = brand.isOn;
-                targetElem.className += brand.isOn ? "gfChecked" : "gfNotChecked";
-                targetElem.src = brand.isOn ? targetElem.dataset["src-if-set"] : targetElem.dataset["src-if-unset"] ;
+                var newClass = brand.isOn ? "gfChecked" : "gfNotChecked";
+                targetElem.className += newClass;
+                targetElem.offsetParent.className += newClass;
+                targetElem.src = brand.isOn ? targetElem.dataset.srcIfSet : targetElem.dataset.srcIfUnset;
             });
             visibleElem.style.display = "block";
         }
     }
-    // showAppliesTo();
+    showAppliesTo();
 </script>
