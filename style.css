@@ -5125,7 +5125,37 @@ color:#7789AD;
     color: #fff;
   }
 
-
+    div.operation-tags {
+        display: none;
+    }
+    .operation-path {
+        padding-top: .5em;
+        display: inline;
+    }
+    .HTTP-verb {
+        border-radius: 8%;
+        padding: 4.5px;
+        color: white;
+        display: table;
+    }
+    .verb-POST {
+        background-color: orange;
+    }
+    .verb-PUT {
+        background-color: blue;
+    }
+    .verb-GET {
+        background-color: green;
+    }
+    .verb-DELETE {
+        background-color: red;
+    }
+    .verb-OPTIONS {
+        background-color: #888;
+    }
+    .section-title {
+        margin-top: 2rem;
+    }
 
 
 
