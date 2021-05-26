@@ -1796,14 +1796,6 @@ li.article-list-item::before {
   color: darken($link_color, 20%);
 }
 
-.article-body code {
-  background: darken($background_color, 3%);
-  /* border: 1px solid #ddd;
-  border-radius: 3px; */
-  padding: 0 5px;
-  margin: 0 2px;
-}
-
 .article-body pre {
   background: darken($background_color, 3%);
   border: 1px solid #ddd;
@@ -5101,7 +5093,6 @@ color:#7789AD;
   .callout-block .callout-title {
     margin-top: 0;
     margin-bottom: 5px;
-    color: #fff;
     text-decoration: underline;
   }
   
