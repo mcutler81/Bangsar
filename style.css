@@ -5105,24 +5105,28 @@ color:#7789AD;
     text-decoration: underline;
   }
   
-  .callout-info {
-    background: #75c181;
-    color: #fff;
+  .callout-success {
+    background-color: #e5f5ec;
+    color: inherit;
+    border-left: solid 5px #5eb082;
   }
   
   .callout-success {
-    background: #75c181;
-    color: #fff;
+    background-color: #e5f5ec;
+    color: inherit;
+    border-left: solid 5px #5eb082;
   }
   
   .callout-warning {
-    background: #ff7001;
-    color: #fff;
+    background-color: #fdf3e4;
+    color: inherit;
+    border-left: solid 5px #f3af3d
   }
   
   .callout-danger {
-    background: rgba(255, 0, 0, .55);
-    color: #fff;
+    background-color: #fee7e3;
+    color: inherit;
+    border-left: solid 5px #dc5f4e
   }
 
     div.operation-tags {
@@ -6555,33 +6559,16 @@ div.operation-tags {
 			display: inline-block; }
 	#spectacle div.article .doc-row {
 	margin: 2rem 0 20px; }
-	#spectacle div.article .doc-examples {
-	color: #fefefe;
-	background-color: #2d3134; }
+	#spectacle div.article .doc-examples { }
 	#spectacle div.article .doc-examples h5 {
-		color: #fefefe;
-		font-size: 1rem;
-		opacity: 0.8; }
-		#spectacle div.article .doc-examples h5 span {
-		opacity: 0.5; }
+		font-size: 1rem; }
+    #spectacle div.article .doc-examples h5 span { }
 	@media screen and (max-width: 63.9375em) {
 		#spectacle div.article .doc-examples:not(:empty) {
 		margin-top: 1.5rem;
 		padding-top: 1.5rem;
 		padding-bottom: 0.5rem; } }
-	#spectacle div.article .doc-examples code {
-		display: block;
-		margin-bottom: 1.5rem;
-		padding: 1.5rem;
-		font-weight: inherit;
-		color: inherit;
-		background-color: transparent;
-		border: none;
-		border-radius: 5px;
-		box-shadow: 0 0 200px rgba(0, 0, 0, 0.33) inset;
-		word-spacing: normal;
-		white-space: pre-wrap;
-		word-break: normal; }
+	
 	#spectacle div.article .doc-examples tbody tr:nth-child(even) {
 		background-color: #353a3d !important; /* TODO: change? */ }
 	#spectacle div.article .doc-examples tbody, #spectacle div.article .doc-examples tfoot, #spectacle div.article .doc-examples thead {
@@ -6642,12 +6629,7 @@ div.operation-tags {
 	font-style: italic; }
 	#spectacle div.article .definition .json-property-name {
 	font-weight: bold; }
-	#spectacle div.article .hljs {
-	line-height: 1.25;
-	overflow-x: auto;
-	padding: 1.5rem;
-	margin-bottom: 1rem;
-	border: none; }
+	
 #spectacle .drawer-layout .drawer {
 	box-shadow: 0 0 10px rgba(45, 49, 52, 0.5);
 	transition: transform 0.5s ease;
